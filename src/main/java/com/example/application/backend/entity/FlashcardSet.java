@@ -11,18 +11,19 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode
+@Entity
 public class FlashcardSet {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String name;
 
     private String description;
 
-    @OneToMany
+    @OneToMany(mappedBy = "flashcardSet")
     private Set<Flashcard> flashcardSet;
 
 }
